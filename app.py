@@ -10,8 +10,6 @@ import json
 
 # create engine
 engine = create_engine('postgresql://admin22:12345@localhost:5432/saccrewproject2')
-Base = automap_base()
-Base.prepare(engine, reflect = True)
 session = Session(engine)
 
 
