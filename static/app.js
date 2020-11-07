@@ -1,9 +1,11 @@
+query = 'http://127.0.0.1:5000/api/datacall'
+
 function init() {
   // Select the dropdown
   var subjectSelector = d3.select("#selDataset");
   
   // Use the D3 library to read in samples.json.
-  d3.json("csvjson.json").then((data) => {
+  d3.json(query).then((data) => {
     console.log(data);
     var products = data;
     products.forEach((data) => { 
@@ -12,6 +14,7 @@ function init() {
     
     // Select the default subject in the dropdown & charts on page load 
     var defaultProduct = products[0];
+    console.log(defaultProduct.product_2019)
     
     // Product Info
     // --------------------------------------------
@@ -20,7 +23,7 @@ function init() {
     metaPanel.append("h5").text(defaultProduct.product_name).classed("card-title",true);
     metaPanel.append("p").text(`ITEM #: ${defaultProduct.item_number}`).classed("card-text",true);
     metaPanel.append("p").text(`BRAND: ${defaultProduct.brand}`).classed("card-text",true);
-    metaPanel.append("a").text("View Product").attr("xlink:href", defaultProduct.product_url).classed("btn btn-primary",true);
+    metaPanel.append("button").text("View Product").attr("xlink:href", defaultProduct.product_url).classed("btn btn-primary",true);
     
     // Product Price
     // --------------------------------------------
@@ -32,17 +35,17 @@ function init() {
     // 2019 Bar
     var svgOne = d3.select("#svgOne")
     svgOne.append("div")
-      .data(defaultProduct.price_2019)
-      .attr("height", 20)
-      .style("width", (defaultProduct.price_2019 * 2) + "px")
-      .style('background-color', '#f80')
-      .text("2019")
-      .classed("firstbar",true);
+        .data([defaultProduct.price_2019])
+        .attr("height", 20)
+        .style("width", (defaultProduct.price_2019 * 2) + "px")
+        .style('background-color', '#f80')
+        .text("2019")
+        .classed("firstbar",true);
 
     // 2020 Bar
     var svgTwo = d3.select("#svgTwo")
     svgTwo.append("div")
-      .data(defaultProduct.price_2020)
+      .data([defaultProduct.price_2020])
       .attr("height", 20)
       .style("width", (defaultProduct.price_2020 * 2) + "px")
       .style('background-color', '#93c')
@@ -70,7 +73,7 @@ function init() {
 function updateMetadata(product) {
   
 // Use the D3 library to read in samples.json.
-  d3.json("csvjson.json").then((data) => {
+  d3.json(query).then((data) => {
     console.log(data);
     var filterList = data.filter(productsObject => productsObject.product_name == product);
     var result = filterList[0];
