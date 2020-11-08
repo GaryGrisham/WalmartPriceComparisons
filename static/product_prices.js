@@ -1,6 +1,6 @@
 query = 'http://127.0.0.1:5000/api/datacall'
 
-window.onload = function init() {
+function init() {
   
     // Function to update the Demographic Info 
     d3.json(query).then((data) => {
