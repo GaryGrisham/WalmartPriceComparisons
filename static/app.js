@@ -23,7 +23,7 @@ function init() {
     metaPanel.append("h5").text(defaultProduct.product_name).classed("card-title",true);
     metaPanel.append("p").text(`ITEM #: ${defaultProduct.item_number}`).classed("card-text",true);
     metaPanel.append("p").text(`BRAND: ${defaultProduct.brand}`).classed("card-text",true);
-    metaPanel.append("button").text("View Product").attr("xlink:href", defaultProduct.product_url).classed("btn btn-primary",true);
+    metaPanel.append("button").text("View Product").on("click", function() { window.open(defaultProduct.product_url); }).classed("btn btn-primary",true);
     
     // Product Price
     // --------------------------------------------
@@ -86,7 +86,7 @@ function updateMetadata(product) {
     metaPanel.append("h5").text(result.product_name).classed("card-title",true);
     metaPanel.append("p").text(`ITEM #: ${result.item_number}`).classed("card-text",true);
     metaPanel.append("p").text(`BRAND: ${result.brand}`).classed("card-text",true);
-    metaPanel.append("a").text("View Product").attr("xlink:href", result.product_url).classed("btn btn-primary",true);
+    metaPanel.append("button").text("View Product").on("click", function() { window.open(result.product_url); }).classed("btn btn-primary",true);
 
     // Update Product Price
     // --------------------------------------------
