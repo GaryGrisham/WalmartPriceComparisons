@@ -39,6 +39,7 @@ function init() {
         .attr("height", 20)
         .style("width", (defaultProduct.price_2019 * 2) + "px")
         .style('background-color', '#f80')
+        .style('max-width', '100%')
         .text("2019")
         .classed("firstbar",true);
 
@@ -49,6 +50,7 @@ function init() {
       .attr("height", 20)
       .style("width", (defaultProduct.price_2020 * 2) + "px")
       .style('background-color', '#93c')
+      .style('max-width', '100%')
       .text("2020")
       .classed("firstbar",true);
 
@@ -109,6 +111,7 @@ function updateMetadata(product) {
       .attr("height", 20)
       .style("width", (price_2019 * 2) + "px")
       .style('background-color', '#f80')
+      .style('max-width', '100%')
       .text("2019")
       .classed("firstbar",true);
 
@@ -120,6 +123,7 @@ function updateMetadata(product) {
       .attr("height", 20)
       .style("width", (price_2020 * 2) + "px")
       .style('background-color', '#93c')
+      .style('max-width', '100%')
       .text("2020")
       .classed("firstbar",true);
 
