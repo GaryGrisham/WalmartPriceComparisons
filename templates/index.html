@@ -40,35 +40,25 @@
       <div class="jumbotron" style="margin-top:20px;">
         <h1 class="display-3">Overview</h1>
         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <!-- PIE CHART 1 -->
+        <!-- PRICES BAR CHART -->
         <div class="col-md-6" style="float:left;">
-        <div class="card border-secondary mb-3" style="min-height:340px;">
-          <div class="card-body" style="margin-right:10px;">
-            <h5 class="card-title">Prices that Increased, Decreased and Stayed Same Bar Chart
-              <br>X-Axis: Increased, Decreased, Stayed Same<br>
-              Y-Axis: Count of products in those categories</h5>
-            
+          <div class="card border-secondary mb-3" style="min-height:340px;">
+            <div class="card-body" style="margin-right:10px;">
+              <h5 class="card-title">How Product Prices Changed from 2019 to 2020</h5>
+              <div id="barContainer" style="height: 300px; width: 100%;"></div>
+            </div>
           </div>
         </div>
-      </div>
-        <!-- PIE CHART 2 -->
-        <div class="col-md-6" style="float:left;">
-        <div class="card border-secondary mb-3" style="min-height:340px;">
-          <div class="card-body">
-            <h5 class="card-title">Of that % that increased, what percentage increased more than 10% Pie Chart</h5>
-            
+          <!-- PRICES PIE CHART -->
+          <div class="col-md-6" style="float:left;">
+          <div class="card border-secondary mb-3" style="min-height:340px;">
+            <div class="card-body">
+              <h5 class="card-title">Product Prices that Increased from 2019 to 2020</h5>
+              <div id="pieContainer" style="height: 300px; width: 100%;"></div>
+            </div>
           </div>
         </div>
-      </div>
-        <!-- PIE CHART 3 -->
-        <!-- <div class="col-md-4" style="float:left;">
-        <div class="card border-secondary mb-3" style="min-height:340px;">
-          <div class="card-body">
-            <h5 class="card-title">% of Prices that Increased More Than 10% in 2020</h5>
-            
-          </div>
-        </div> 
-        </div>-->
+        
         <br clear="both"/>
       </div>
     </div>
@@ -118,7 +108,6 @@
         <!-- BUBBLE CHART -->
         <div class="col-md-12" id="bubble">
           <div id="scatter"></div>
-          <!-- <img src="./static/images/bubble-chart.png" style="width:100%;"/> -->
         </div>
     </div>
   </div>
@@ -188,14 +177,14 @@
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
 <script src="./static/app.js"></script>
 <script src="./static/product_categories.js"></script>
-<!-- <script src="./assets/js/overview.js"></script> -->
-<!-- <script src="./assets/js/cart.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
 <script src="./static/barAndWhisker.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>  
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
 </body>
 </html>
 
