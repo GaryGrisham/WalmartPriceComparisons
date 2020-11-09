@@ -45,7 +45,7 @@ def jsonifyData():
     return jsonify([dict(row) for row in results])
 
 
-This route will pull the data for get the counts of products for each category
+# This route will pull the data for get the counts of products for each category
 @app.route("/api/categorycounts")
 def getcategorycounts():
     # Create our session (link) from Python to the DB

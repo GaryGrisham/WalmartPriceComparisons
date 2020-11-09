@@ -1,12 +1,29 @@
 query = 'http://127.0.0.1:5000/api/datacall'
+var queryUrl = "http://127.0.0.1:5000/api/categorycounts"
 
 function init() {
   // Select the dropdown
+  var categoryDrop = d3.select('#selCategory')
   var subjectSelector = d3.select("#selDataset");
   
   // Use the D3 library to read in samples.json.
   d3.json(query).then((data) => {
     console.log(data);
+
+    function UniqueVal(value, index, self) {
+      return self.indexOf(value) === index;
+    }
+    AllCategories = []
+    for (var i = 0; i < data.length; i++) {
+      AllCategories.push(data[i].category)
+    };
+    console.log(AllCategories);
+    categories = AllCategories.filter(UniqueVal);
+    console.log(categories);
+    categories.forEach((data) => { 
+      categoryDrop.append("option").text(data); 
+    });
+    
     var products = data;
     products.forEach((data) => { 
       subjectSelector.append("option").text(data.product_name); 
