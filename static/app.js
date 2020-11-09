@@ -2,19 +2,41 @@ query = 'http://127.0.0.1:5000/api/datacall'
 
 function init() {
   // Select the dropdown
+  var categoryDrop = d3.select('#selCategory')
   var subjectSelector = d3.select("#selDataset");
   
   // Use the D3 library to read in samples.json.
   d3.json(query).then((data) => {
     console.log(data);
-    var products = data;
-    products.forEach((data) => { 
+
+    function UniqueVal(cat, index, self) {
+      return self.indexOf(cat) === index;
+    }
+    AllCategories = []
+    for (var i = 0; i < data.length; i++) {
+      AllCategories.push(data[i].category)
+    };
+    console.log(AllCategories);
+    categories = AllCategories.filter(UniqueVal);
+    console.log(categories);
+    categories.forEach((data) => { 
+      categoryDrop.append("option").text(data); 
+    });
+
+    CategorySelected = d3.select("#selCategory").property("value");
+
+    // Why won't line 28 work????
+    // productList = data.filter(data => data.category == d3.select("#selCategory").property("value"));
+    productList = data.filter(data => data.category == 'Sports & Outdoors ');
+    console.log(productList)
+
+    productList.forEach((data) => { 
       subjectSelector.append("option").text(data.product_name); 
     });
     
     // Select the default subject in the dropdown & charts on page load 
-    var defaultProduct = products[0];
-    console.log(defaultProduct.product_2019)
+    var defaultProduct = data[0];
+    console.log(defaultProduct)
     
     // Product Info
     // --------------------------------------------

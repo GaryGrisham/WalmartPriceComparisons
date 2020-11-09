@@ -72,7 +72,15 @@
         <h2>Product Comparison</h2>
       </div>
       <div class="col-md-6" style="float:left;">
-        <!-- SELECT -->
+      <!-- SELECT -->
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Select a Category</div>
+          <div class="card-body">
+            <div class="form-group">
+              <select class="custom-select" id="selCategory" onchange="optionChanged(this.value)"></select>
+            </div>
+          </div>
+      </div>
       <div class="card text-white bg-primary mb-3">
         <div class="card-header">Select a Product</div>
           <div class="card-body">
