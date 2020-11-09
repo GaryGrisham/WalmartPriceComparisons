@@ -1,0 +1,41 @@
+
+/* Latitude Custom Styles */
+
+#sidebar_vis div {
+    float:left;
+    margin: 10px 0;
+}
+#sidebar_vis img {
+    width:100%;
+}
+a:hover img {
+    border-color:#5bc0de;
+}
+.topCol {
+    padding-top:30px;
+}
+.sampleGraph {
+    width:280px;
+    margin-right:20px;
+    margin-bottom:20px;
+}
+.imgFull {
+    width:100%;
+}
+.imgOn {
+    border-color:#f89406;
+}
+.firstbar {
+    padding:5px;
+    color:#fff;
+    font-weight:bold;
+    display:block;
+}
+.prodname {
+    display:block;
+    width:80%;
+}
+.prodprice {
+    display:block;
+    width:20%;
+}
