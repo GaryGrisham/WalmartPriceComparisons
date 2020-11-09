@@ -46,29 +46,29 @@ def jsonifyData():
 
 
 # This route will pull the data for get the counts of products for each category
-# @app.route("/api/categorycounts")
-# def getcategorycounts():
-#     # Create our session (link) from Python to the DB
-#     session = Session(engine)
+@app.route("/api/categorycounts")
+def getcategorycounts():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
 
-# # Grab All the data
-#     results=session.query(
-#         walmartdata.category,
-#         func.count(walmartdata.item_number)
-#         ).\
-#         group_by(walmartdata.category)
+# Grab All the data
+    results=session.query(
+        walmartdata.category,
+        func.count(walmartdata.item_number)
+        ).\
+        group_by(walmartdata.category)
 
-#     session.close()
+    session.close()
 
-#     # Create a dictionary from the row data and append to a list of all_sqldata
-#     all_sqldata = []
-#     for cat, total in results:
-#         sql_dict = {}
-#         sql_dict["Category"] = cat
-#         sql_dict["Item_Count"] = total
-#         all_sqldata.append(sql_dict)
+    # Create a dictionary from the row data and append to a list of all_sqldata
+    all_sqldata = []
+    for cat, total in results:
+        sql_dict = {}
+        sql_dict["Category"] = cat
+        sql_dict["Item_Count"] = total
+        all_sqldata.append(sql_dict)
 
-#     return jsonify(all_sqldata)
+    return jsonify(all_sqldata)
 
 
 if __name__ == '__main__':
