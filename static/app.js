@@ -13,12 +13,12 @@ function init() {
     function UniqueVal(cat, index, self) {
       return self.indexOf(cat) === index;
     }
-    AllCategories = []
+    var AllCategories = []
     for (var i = 0; i < data.length; i++) {
       AllCategories.push(data[i].category)
     };
 
-    categories = AllCategories.filter(UniqueVal).sort();
+    var categories = AllCategories.filter(UniqueVal).sort();
     console.log(categories);
     
     // Add categories to dropdown
@@ -27,7 +27,7 @@ function init() {
     });
 
     // Filter product based on category
-    productList = data.filter(data => data.category == d3.select("#selCategory").property("value"));
+    var productList = data.filter(data => data.category == d3.select("#selCategory").property("value"));
     productList.sort((a, b) => (a.product_name > b.product_name) ? 1 : -1)
 
     // Add products to dropdown
@@ -37,6 +37,7 @@ function init() {
   
   // Select the default subject in the dropdown & charts on page load 
   var defaultProduct = productList[0];
+  console.log(productList)
     
     // Product Info
     // --------------------------------------------
@@ -93,12 +94,13 @@ function init() {
   });
 }
 
+
 // Function to update products dropdown when category is selected
 function updateCategory(product) {
   var subjectSelector = d3.select("#selDataset");
 
   // Use the D3 library to read in samples.json.
-    d3.json("csvjson.json").then((data) => {
+    d3.json(query).then((data) => {
 
       var catfilterList = data.filter(data => data.category == d3.select("#selCategory").property("value"));
       catfilterList.sort((a, b) => (a.product_name > b.product_name) ? 1 : -1)
