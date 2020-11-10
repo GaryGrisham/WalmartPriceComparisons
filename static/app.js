@@ -7,7 +7,7 @@ function init() {
   
   // Use the D3 library to read in samples.json.
   d3.json(query).then((data) => {
-    //console.log(data);
+    console.log(data);
 
     // Find unique category values
     function UniqueVal(cat, index, self) {
@@ -26,9 +26,13 @@ function init() {
       categoryDrop.append("option").text(data); 
     });
 
+    var catSelected = d3.select("#selCategory").property("value");
+    console.log(catSelected)
+
     // Filter product based on category
-    var productList = data.filter(data => data.category == d3.select("#selCategory").property("value"));
-    productList.sort((a, b) => (a.product_name > b.product_name) ? 1 : -1)
+    var productList = data.filter(data => data.category == catSelected + " ");
+    productList.sort((a, b) => (a.product_name > b.product_name) ? 1 : -1);
+    console.log(productList)
 
     // Add products to dropdown
     productList.forEach((data) => { 
@@ -37,7 +41,7 @@ function init() {
   
   // Select the default subject in the dropdown & charts on page load 
   var defaultProduct = productList[0];
-  console.log(productList)
+  
     
     // Product Info
     // --------------------------------------------
@@ -98,11 +102,11 @@ function init() {
 // Function to update products dropdown when category is selected
 function updateCategory(product) {
   var subjectSelector = d3.select("#selDataset");
-
+  var catSelected = d3.select("#selCategory").property("value");
   // Use the D3 library to read in samples.json.
     d3.json(query).then((data) => {
 
-      var catfilterList = data.filter(data => data.category == d3.select("#selCategory").property("value"));
+      var catfilterList = data.filter(data => data.category == catSelected + " ");
       catfilterList.sort((a, b) => (a.product_name > b.product_name) ? 1 : -1)
 
       subjectSelector.html("");
