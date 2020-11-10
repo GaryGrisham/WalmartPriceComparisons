@@ -138,7 +138,8 @@ def topten():
 
 # Grab All the data
     results=session.query(
-        walmartdata.product_name, 
+        walmartdata.product_name,
+        walmartdata.category,
         walmartdata.price_2020 - walmartdata.price_2019
         ).\
         order_by((walmartdata.price_2020 - walmartdata.price_2019).desc()).limit(10)
@@ -147,9 +148,10 @@ def topten():
 
     # Create a dictionary from the row data and append to a list of all_sqldata
     all_sqldata = []
-    for name, pricediff in results:
+    for name, category, pricediff in results:
         sql_dict = {}
         sql_dict["ProductName"] = name
+        sql_dict["Category"] = category
         sql_dict["PriceDiff"] = pricediff
         all_sqldata.append(sql_dict)
 
@@ -162,7 +164,8 @@ def lowerten():
 
 # Grab All the data
     results=session.query(
-        walmartdata.product_name, 
+        walmartdata.product_name,
+        walmartdata.category,
         walmartdata.price_2019 - walmartdata.price_2020
         ).\
         order_by((walmartdata.price_2019 - walmartdata.price_2020).desc()).limit(10)
@@ -171,9 +174,10 @@ def lowerten():
 
     # Create a dictionary from the row data and append to a list of all_sqldata
     all_sqldata = []
-    for name, pricediff in results:
+    for name, category, pricediff in results:
         sql_dict = {}
         sql_dict["ProductName"] = name
+        sql_dict["Category"] = category
         sql_dict["PriceDiff"] = pricediff
         all_sqldata.append(sql_dict)
 
