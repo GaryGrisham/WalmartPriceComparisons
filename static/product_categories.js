@@ -16,14 +16,15 @@ product_counts = []
   }
 
     // The bubble chart
-
+    
             var bubbletrace = {
               x: categories,
               y: product_counts,
               mode: "markers",
               marker: {
                 size: product_counts,
-                color: '#9c3'
+                colorscale: 'Greens',
+                color: ['#6610f2','#6f42c1','#e83e8c','#c00','#fd7e14','#f80','#77b300','#20c997','#93c','#2a9fd6','#6610f2','#6f42c1','#e83e8c','#c00','#fd7e14','#f80','#77b300','#20c997']
             },
 
           };
@@ -33,15 +34,54 @@ product_counts = []
       // set the layout for the bubble plot
           
           var bubblelayout = {
-              height: 600,
+              height: 500,
               width: 900,
-              title: {
-                text:'Product Counts By Category',
-                font: {
-                  family: 'Calibri',
-                  size: 24
+              plot_bgcolor:"#rgba(255,255,255,0)",
+              paper_bgcolor:"rgba(255,255,255,0)",
+              yaxis: {
+                automargin:true,
+                tickfont: {
+                  color: "#fff",
+                  family: 'Roboto,Arial,sans-serif',
                 },
-              }
+                title: {
+                  text: "Product Counts",
+                  font: { 
+                    color: "#ccc",
+                  },
+                },
+                tickcolor: "rgba(255,255,255,0.75)",
+                tickwidth: 1,
+                
+                gridcolor: "rgba(255,255,255,0.25)",
+                gridwidth: 1,
+                
+                zerolinecolor: "#fff",
+                zerolinewidth: 1,
+              },
+              xaxis: {
+                automargin:true,
+                tickmode: "array",
+                tickangle:45,
+                tickfont: {
+                  color: "#fff",
+                  family: 'Roboto,Arial,sans-serif',
+                },
+                tickcolor: "rgba(255,255,255,0.25)",
+                //tickwidth: 100,
+                
+                gridcolor: "rgba(255,255,255,0.25)",
+                gridwidth: 1,      
+              },
+              // title: {
+              //   text:'Product Counts By Category',
+              //   font: {
+              //     family: 'Roboto,Arial,sans-serif',
+              //     size: 24,
+              //     color: "#fff"
+              //   },
+                
+              // }
           };
           
         // create the bubble plot
@@ -72,14 +112,20 @@ product_counts = []
                   x: categories,
                   y: price2019,
                   name: "Average 2019 Price",
-                  type: "bar"
+                  type: "bar",
+                  marker: {
+                    color: "#fd7e14"
+                  }
     
               };
               var bartrace2 = {
                 x: categories,
                 y: price2020,
                 name: "Average 2020 Price",
-                type: "bar"
+                type: "bar",
+                marker: {
+                  color: "#6f42c1"
+                }
   
             };
               var bardata = [bartrace1, bartrace2];
@@ -89,13 +135,64 @@ product_counts = []
               var barlayout = {
                   height: 600,
                   width: 900,
-                  title: {
-                    text:'Average Price By Category',
+                  plot_bgcolor:"#rgba(255,255,255,0)",
+                  paper_bgcolor:"rgba(255,255,255,0)",
+                  showlegend: true,
+                  legend: {
+                    x: 0,
+                    y: 1,
+                    traceorder: 'normal',
                     font: {
-                      family: 'Calibri',
-                      size: 24
+                      family: 'sans-serif',
+                      size: 12,
+                      color: '#222'
                     },
+                    bgcolor: '#E2E2E2',
+                    bordercolor: '#FFFFFF',
+                    borderwidth: 2
                   },
+              yaxis: {
+                automargin:true,
+                tickfont: {
+                  color: "#fff",
+                  family: 'Roboto,Arial,sans-serif',
+                },
+                title: {
+                  text: "Average Price ($)",
+                  font: { 
+                    color: "#ccc",
+                  },
+                },
+                tickcolor: "rgba(255,255,255,0.75)",
+                tickwidth: 1,
+                
+                gridcolor: "rgba(255,255,255,0.25)",
+                gridwidth: 1,
+                
+                zerolinecolor: "#fff",
+                zerolinewidth: 1,
+              },
+              xaxis: {
+                automargin:true,
+                tickmode: "array",
+                tickangle:45,
+                tickfont: {
+                  color: "#fff",
+                  family: 'Roboto,Arial,sans-serif',
+                },
+                tickcolor: "rgba(255,255,255,0.25)",
+                //tickwidth: 100,
+                
+                gridcolor: "rgba(255,255,255,0.25)",
+                gridwidth: 1,      
+              },
+                  // title: {
+                  //   text:'Average Price By Category',
+                  //   font: {
+                  //     family: 'Calibri',
+                  //     size: 24
+                  //   },
+                  // },
                   barmode: 'group'
               };
               

@@ -45,9 +45,10 @@ function init() {
     
     // Product Info
     // --------------------------------------------
+    var metaHeader = d3.select("#meta-header");
+    metaHeader.append("span").text(defaultProduct.category).classed("badge badge-success",true).style("margin-bottom","10px").style("font-size","12px");
+    metaHeader.append("h5").text(defaultProduct.product_name).classed("card-title",true);
     var metaPanel = d3.select("#product-metadata"); 
-    metaPanel.append("span").text(defaultProduct.category).classed("badge badge-success",true).style("margin-bottom","10px").style("font-size","12px");
-    metaPanel.append("h5").text(defaultProduct.product_name).classed("card-title",true);
     metaPanel.append("p").text(`ITEM #: ${defaultProduct.item_number}`).classed("card-text",true);
     metaPanel.append("p").text(`BRAND: ${defaultProduct.brand}`).classed("card-text",true);
     metaPanel.append("button").text("View on Walmart.com").on("click", function() { window.open(defaultProduct.product_url); }).classed("btn btn-primary",true);
@@ -127,10 +128,12 @@ function updateMetadata(product) {
 
     // Update Product Info
     // --------------------------------------------
+    var metaHeader = d3.select("#meta-header");
+    metaHeader.html("");
+    metaHeader.append("span").text(result.category).classed("badge badge-success",true).style("margin-bottom","10px").style("font-size","12px");
+    metaHeader.append("h5").text(result.product_name).classed("card-title",true);
     var metaPanel = d3.select("#product-metadata");  
     metaPanel.html("");
-    metaPanel.append("span").text(result.category).classed("badge badge-success",true).style("margin-bottom","10px").style("font-size","12px");
-    metaPanel.append("h5").text(result.product_name).classed("card-title",true);
     metaPanel.append("p").text(`ITEM #: ${result.item_number}`).classed("card-text",true);
     metaPanel.append("p").text(`BRAND: ${result.brand}`).classed("card-text",true);
     metaPanel.append("button").text("View on Walmart.com").on("click", function() { window.open(result.product_url); }).classed("btn btn-primary",true);

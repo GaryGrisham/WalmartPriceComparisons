@@ -1,29 +1,26 @@
 
-/* Latitude Custom Styles */
-
-#sidebar_vis div {
+/* Custom Styles */
+.jumbotron {
+    margin-top:110px;
+}
+.col-md-6, .col-md-3 {
     float:left;
-    margin: 10px 0;
 }
-#sidebar_vis img {
-    width:100%;
-}
-a:hover img {
-    border-color:#5bc0de;
-}
-.topCol {
-    padding-top:30px;
-}
-.sampleGraph {
-    width:280px;
-    margin-right:20px;
+.card-primary {
+    background-color:#2a9fd6;
+    border-radius:5px;
+    padding:0;
+    color:#fff;
     margin-bottom:20px;
 }
-.imgFull {
-    width:100%;
-}
-.imgOn {
-    border-color:#f89406;
+.prodComp {
+    padding:40px 20px;
+    margin-bottom:20px;
+    background: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.8)), url('../images/walmart-shopping.jpg');
+    background-image:center;
+    background-size: cover;
+    background-position: center;
+    margin-top:60px;
 }
 .firstbar {
     padding:5px;
@@ -38,4 +35,20 @@ a:hover img {
 .prodprice {
     display:block;
     width:20%;
+}
+#pricecomp {
+    font-size:18px;
+    color:#fff;
+}
+.border-primary-col {
+    background-color:#222;
+    border:1px solid #2a9fd6;
+    border-radius:5px;
+    padding:40px 20px;
+    margin:60px 0px 30px 0;
+}
+.border-primary {
+    padding:40px 20px;
+    margin:60px 0px;
+    color:#fff;
 }
