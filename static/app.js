@@ -7,8 +7,9 @@ function init() {
   
   // Use the D3 library to read in samples.json.
   d3.json(query).then((data) => {
-    console.log(data);
+    //console.log(data);
 
+    // Find unique category values
     function UniqueVal(cat, index, self) {
       return self.indexOf(cat) === index;
     }
@@ -16,36 +17,35 @@ function init() {
     for (var i = 0; i < data.length; i++) {
       AllCategories.push(data[i].category)
     };
-    console.log(AllCategories);
-    categories = AllCategories.filter(UniqueVal);
+
+    categories = AllCategories.filter(UniqueVal).sort();
     console.log(categories);
+    
+    // Add categories to dropdown
     categories.forEach((data) => { 
       categoryDrop.append("option").text(data); 
     });
 
-    CategorySelected = d3.select("#selCategory").property("value");
+    // Filter product based on category
+    productList = data.filter(data => data.category == d3.select("#selCategory").property("value"));
+    productList.sort((a, b) => (a.product_name > b.product_name) ? 1 : -1)
 
-    // Why won't line 28 work????
-    // productList = data.filter(data => data.category == d3.select("#selCategory").property("value"));
-    productList = data.filter(data => data.category == 'Sports & Outdoors ');
-    console.log(productList)
-
+    // Add products to dropdown
     productList.forEach((data) => { 
       subjectSelector.append("option").text(data.product_name); 
-    });
-    
-    // Select the default subject in the dropdown & charts on page load 
-    var defaultProduct = data[0];
-    console.log(defaultProduct)
+  });
+  
+  // Select the default subject in the dropdown & charts on page load 
+  var defaultProduct = productList[0];
     
     // Product Info
     // --------------------------------------------
     var metaPanel = d3.select("#product-metadata"); 
-    metaPanel.append("span").text(defaultProduct.category).classed("badge badge-success",true);
+    metaPanel.append("span").text(defaultProduct.category).classed("badge badge-success",true).style("margin-bottom","10px").style("font-size","12px");
     metaPanel.append("h5").text(defaultProduct.product_name).classed("card-title",true);
     metaPanel.append("p").text(`ITEM #: ${defaultProduct.item_number}`).classed("card-text",true);
     metaPanel.append("p").text(`BRAND: ${defaultProduct.brand}`).classed("card-text",true);
-    metaPanel.append("button").text("View Product").on("click", function() { window.open(defaultProduct.product_url); }).classed("btn btn-primary",true);
+    metaPanel.append("button").text("View on Walmart.com").on("click", function() { window.open(defaultProduct.product_url); }).classed("btn btn-primary",true);
     
     // Product Price
     // --------------------------------------------
@@ -93,6 +93,23 @@ function init() {
   });
 }
 
+// Function to update products dropdown when category is selected
+function updateCategory(product) {
+  var subjectSelector = d3.select("#selDataset");
+
+  // Use the D3 library to read in samples.json.
+    d3.json("csvjson.json").then((data) => {
+
+      var catfilterList = data.filter(data => data.category == d3.select("#selCategory").property("value"));
+      catfilterList.sort((a, b) => (a.product_name > b.product_name) ? 1 : -1)
+
+      subjectSelector.html("");
+      catfilterList.forEach((data) => { 
+          subjectSelector.append("option").text(data.product_name); 
+        });
+  });
+}
+
 // Function to update the Demographic Info 
 function updateMetadata(product) {
   
@@ -106,11 +123,11 @@ function updateMetadata(product) {
     // --------------------------------------------
     var metaPanel = d3.select("#product-metadata");  
     metaPanel.html("");
-    metaPanel.append("span").text(result.category).classed("badge badge-success",true);
+    metaPanel.append("span").text(result.category).classed("badge badge-success",true).style("margin-bottom","10px").style("font-size","12px");
     metaPanel.append("h5").text(result.product_name).classed("card-title",true);
     metaPanel.append("p").text(`ITEM #: ${result.item_number}`).classed("card-text",true);
     metaPanel.append("p").text(`BRAND: ${result.brand}`).classed("card-text",true);
-    metaPanel.append("button").text("View Product").on("click", function() { window.open(result.product_url); }).classed("btn btn-primary",true);
+    metaPanel.append("button").text("View on Walmart.com").on("click", function() { window.open(result.product_url); }).classed("btn btn-primary",true);
 
     // Update Product Price
     // --------------------------------------------
@@ -171,8 +188,12 @@ function updateMetadata(product) {
 
 // Function to update subject in the dropdown & charts on select
 function optionChanged(selectSubject) {
-  // updateCharts(selectSubject);
   updateMetadata(selectSubject);
+}
+
+// Function to update subject in the dropdown & charts on select
+function catChanged(selectProduct) {
+  updateCategory(selectProduct);
 }
 
 // Initialize the dashboard

@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8">
     <title>Walmart Data Dashboard</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <!-- BOOTSWATCH THEME: SLATE -->
     <link rel="stylesheet" href="./static/css/bootstrap.min.css">
     <!-- CUSTOM STYLES -->
@@ -81,22 +80,26 @@
       </div>
       <div class="col-md-6" style="float:left;">
       <!-- SELECT -->
-      <div class="card text-white bg-primary mb-3">
-        <div class="card-header">Select a Category</div>
+      <div class="col-md-12" style="background-color:#2a9fd6;border-radius:5px;padding:0;color:#fff;margin-bottom:20px;">
+        <div class="col-md-3" style="float:left;padding:0;">
           <div class="card-body">
-            <div class="form-group">
-              <select class="custom-select" id="selCategory" onchange="optionChanged(this.value)"></select>
-            </div>
-          </div>
-      </div>
-      <div class="card text-white bg-primary mb-3">
-        <div class="card-header">Select a Product</div>
+            <p>Select a Category:</p>
+            <select class="custom-select" id="selCategory" onchange="catChanged(this.value)"></select>
+          </div> 
+        </div>
+        <div class="col-md-6" style="float:left;padding:0;">
           <div class="card-body">
-            <div class="form-group">
-              <select class="custom-select" id="selDataset" onchange="optionChanged(this.value)"></select>
-            </div>
-          </div>
-      </div>
+            <p>Select a Product:</p>
+            <select class="custom-select" id="selDataset"></select>
+          </div>   
+        </div>
+        <div class="col-md-3" style="float:left;padding:0;">
+          <div class="card-body" style="vertical-align:bottom;margin-top:36px;">
+            <button type="button" class="btn btn-success" onclick="updateMetadata(selDataset.value)">View Product</button>
+          </div> 
+        </div>
+        <br clear="both" />
+      </div>    
       <!-- PRODUCT INFO -->
       <div class="card border-primary mb-3">
           <div class="card-body" id="product-metadata"></div>
@@ -214,7 +217,6 @@
   <div class="footer-copyright text-center py-3">© 2020 Copyright SacCrewProject2. UC Davis Data Analytics Boot Camp.</div>
 </footer>
 <!-- END FOOTER -->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
 <script src="./static/app.js"></script>
