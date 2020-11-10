@@ -86,7 +86,7 @@ def getcategorycounts():
     session = Session(engine)
 
 # Grab All the data
-    results=session.query(
+    results = session.query(
         walmartdata.category,
         func.count(walmartdata.item_number)
         ).\
@@ -105,6 +105,54 @@ def getcategorycounts():
     return jsonify(all_sqldata)
 
 # Add any additional queries here
+@app.route("/api/categoryavgprice")
+def getcategoryavg():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
 
+# Grab All the data
+    results=session.query(
+        walmartdata.category,
+        func.avg(walmartdata.price_2019),
+        func.avg(walmartdata.price_2020),
+        ).\
+        group_by(walmartdata.category)
+
+    session.close()
+
+    # Create a dictionary from the row data and append to a list of all_sqldata
+    all_sqldata = []
+    for cat, avg19, avg20 in results:
+        sql_dict = {}
+        sql_dict["Category"] = cat
+        sql_dict["2019_avg"] = avg19
+        sql_dict["2020_avg"] = avg20
+        all_sqldata.append(sql_dict)
+
+    return jsonify(all_sqldata)
+
+@app.route("/api/toptenpriceincrease")
+def topten():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+# Grab All the data
+    results=session.query(
+        walmartdata.product_name, 
+        walmartdata.price_2020 - walmartdata.price_2019
+        ).\
+        order_by((walmartdata.price_2020 - walmartdata.price_2019).desc()).limit(10)
+
+    session.close()
+
+    # Create a dictionary from the row data and append to a list of all_sqldata
+    all_sqldata = []
+    for name, pricediff in results:
+        sql_dict = {}
+        sql_dict["ProductName"] = name
+        sql_dict["PriceDiff"] = pricediff
+        all_sqldata.append(sql_dict)
+
+    return jsonify(all_sqldata)
 if __name__ == "__main__":
     app.run(debug=True)
