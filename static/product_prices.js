@@ -78,6 +78,14 @@ function init() {
       console.log(pdecreasedChange) // Print the decreased percentage
       console.log(pnoChange) // Print the no change percentage
   
+      
+      // Custom color set for CanvasJS charts
+      // -------------------------------------------------     
+      CanvasJS.addColorSet("cyborgColors",
+            [//colorSet Array
+            '#6f42c1','#fd7e14','#2a9fd6','#20c997'                
+            ]);
+      
       // CanvasJS Bar Chart
       // -------------------------------------------------
       var chart = new CanvasJS.Chart("barContainer", {
@@ -86,6 +94,7 @@ function init() {
           // title:{
           //     text: "Top Oil Reserves"
           // },
+          colorSet: "cyborgColors",
           axisY: {
               title: "Product Count"
           },
@@ -111,6 +120,7 @@ function init() {
           //     text: "Website Traffic Source"
           // },
           theme: "dark1",
+          colorSet: "cyborgColors",
           data: [{
                   type: "pie",
                   startAngle: 45,
@@ -120,9 +130,11 @@ function init() {
                   // yValueFormatString:"#,##0.#"%"",
                   dataPoints: [
                       { label: "0 to 9% Increase", y: pincreasedChangeLess10, per: "%" },
-                      { label: "10%+ Increase", y: pincreasedChange10, per: "%" },
+                      
                       { label: "Decrease", y: pdecreasedChange, per: "%" },
-                      { label: "No Change", y: pnoChange, per: "%" }
+                      { label: "No Change", y: pnoChange, per: "%" },
+                      { label: "10%+ Increase", y: pincreasedChange10, per: "%" },
+                      
                   ]
           }]
       };
