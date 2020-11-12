@@ -30,7 +30,7 @@ function init() {
     console.log(catSelected)
 
     // Filter product based on category
-    var productList = data.filter(data => data.category == catSelected + " ");
+    var productList = data.filter(data => data.category == catSelected);
     productList.sort((a, b) => (a.product_name > b.product_name) ? 1 : -1);
     console.log(productList)
 
@@ -107,7 +107,7 @@ function updateCategory(product) {
   // Use the D3 library to read in samples.json.
     d3.json(query).then((data) => {
 
-      var catfilterList = data.filter(data => data.category == catSelected + " ");
+      var catfilterList = data.filter(data => data.category == catSelected);
       catfilterList.sort((a, b) => (a.product_name > b.product_name) ? 1 : -1)
 
       subjectSelector.html("");
