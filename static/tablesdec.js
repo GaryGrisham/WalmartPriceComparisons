@@ -1,9 +1,11 @@
 var query = "http://127.0.0.1:5000/api/toptenpricedecrease"
 
+function init() {
+
 d3.json(query).then((data) => {
     console.log(data);
 
-var tbody = d3.select("tbody");
+var tbody = d3.select("tbody2");
 
 // Console.log the dec data from data.js
 // console.log(waldata);
@@ -19,5 +21,9 @@ data.forEach(function(dec){
         row.append('td').text(y);
         row2.append('td').text('    ')
     })
-
 });
+});
+}
+
+// Initialize the dashboard
+init();
