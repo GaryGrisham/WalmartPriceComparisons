@@ -84,15 +84,16 @@ console.log(plotData);
             dataPoints: plotData,         
                 
         },
-        {
-            type: "scatter",
-            name: "Outlier Values",
-            color: "#F15278",
-            markerType: "circle",
-            toolTipContent: "<span style=\"color:#C0504E\">{county}</span>: {y} Days",
-            showInLegend: true,
-            dataPoints:  outliers
-        }]
+        // {
+        //     type: "scatter",
+        //     name: "Outlier Values",
+        //     color: "#F15278",
+        //     markerType: "circle",
+        //     toolTipContent: "<span style=\"color:#C0504E\">{county}</span>: {y} Days",
+        //     showInLegend: true,
+        //     dataPoints:  outliers
+        // }
+    ]
 
     };
     $("#chartContainer").CanvasJSChart(options);
