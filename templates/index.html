@@ -47,7 +47,11 @@
     <div class="container">
       <div class="jumbotron">
         <h1 class="display-3">Inflation</h1>
-        <p class="lead">What does that word mean to your average consumer?  How does inflation apply to my trip to Walmart?  Were prices different between 2019 and 2020?  If my paycheck remained the same from 2019 would I be doing better or worse?   What can I afford in 2020?</p>
+        <p class="lead">What does that word mean to your average consumer?  How does inflation apply to my trip to Walmart?  Were prices different between 2019 and 2020?  If my paycheck remained the same from 2019 would I be doing better or worse?   What can I afford in 2020? 
+          <br>
+          <br>
+          Our dataset is a set of data we found on Kaggle.com. It represents prices for products found in Walmart USA for 2019 and 2020.  We chose Walmart data to represent purchasing choices found for your typical US shopper. These prices are for on-line products.  
+        </p>
         <!-- PRICES BAR CHART -->
         <div class="col-md-6">
           <div class="card border-secondary mb-3" style="min-height:340px;">
@@ -139,18 +143,14 @@
           <table class="table">
             <thead>
               <tr class="table-primary">
-              <th scope="col">Name</th>
               <th scope="col">Category</th>
               <th scope="col">Price Difference</th>
+              <th scope="col">Name</th>
             </tr>
           </thead>
-            <tbody1>
-              <tr>
-                <td>Product Name goes here</td>
-                <td>Product Category goes here</td>
-                <td>Price changes goes here</td>
-              </tr>
-            </tbody1>
+            <tbody id="tbody1">
+              
+            </tbody>
           </table>
         </div>
       </div>
@@ -160,21 +160,17 @@
           <div class="card border-secondary mb-3">
             <div class="card-header"><h5>⇩ Top 10 Product Price Decreases</h5></div>
             <div class="card-body"> 
-            <table class="table">
+            <table class="table" >
               <thead>
                 <tr class="table-primary">
-                <th scope="col">Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">Price Difference</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Price Difference</th>
+                  <th scope="col">Name</th>
               </tr>
             </thead>
-              <tbody2>
-                <tr>
-                  <td>Product Name goes here</td>
-                  <td>Product Category goes here</td>
-                  <td>Price changes goes here</td>
-                </tr>
-              </tbody2>
+              <tbody id="tbody2">
+            
+              </tbody>
             </table>
           </div>
           </div>
@@ -240,7 +236,6 @@
 <script src="./static/product_prices.js"></script>
 <script src="./static/boxAndWhisker.js"></script>
 <script src="./static/tablesInc.js"></script>
-<script src="./static/tablesdec.js"></script>
 </body>
 </html>
 

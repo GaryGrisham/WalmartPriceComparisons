@@ -13,15 +13,15 @@ window.onload = function () {
       }
 
     // Import Data
-    d3.json(query).then(function(data) {
+    d3.json(query).then(function(AllData) {
         // Find unique category values
         function UniqueVal(item, index, self) {
             return self.indexOf(item) === index;
           }
         
         AllCategories = [];
-        for (var i = 0; i < data.length; i++) {
-            AllCategories.push(data[i].category);
+        for (var i = 0; i < AllData.length; i++) {
+            AllCategories.push(AllData[i].category);
         }
         categories = AllCategories.filter(UniqueVal);
 
@@ -31,18 +31,18 @@ window.onload = function () {
         for (let i = 0; i < categories.length ; i++) {
             var dataDict = {};
             categoryPriceChange = [];
-            for (let j = 0; j < data.length; j++){
-                if (data[j].category == categories[i]){
-                    categoryPriceChange.push(data[j].price_percent_change);
+            for (let j = 0; j < AllData.length; j++){
+                if (AllData[j].category == categories[i]){
+                    categoryPriceChange.push(AllData[j].price_percent_change);
                 }    
             };
-        dataDict['x'] = i;
-        dataDict["label"] = categories[i];
-        dataDict['y'] = QuartCalc(categoryPriceChange);
-        plotData.push(dataDict);
-        for (k=0; k < categoryPriceChange.length; k ++){
-            if((categoryPriceChange[k] > QuartCalc(categoryPriceChange)[3]) ||  (categoryPriceChange[k] < QuartCalc(categoryPriceChange)[0])){
-                outliers.push({'x': i, 'label': categories[i], 'y': categoryPriceChange[k]});
+            dataDict['x'] = i;
+            dataDict["label"] = categories[i];
+            dataDict['y'] = QuartCalc(categoryPriceChange);
+            plotData.push(dataDict);
+            for (k=0; k < categoryPriceChange.length; k ++){
+                if((categoryPriceChange[k] > QuartCalc(categoryPriceChange)[3]) ||  (categoryPriceChange[k] < QuartCalc(categoryPriceChange)[0])){
+                    outliers.push({'x': i, 'label': categories[i], 'y': categoryPriceChange[k]});
 
             };
         };

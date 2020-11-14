@@ -90,9 +90,9 @@ def topten():
     results=session.query(
         walmartdata.product_name,
         walmartdata.category,
-        walmartdata.price_2020 - walmartdata.price_2019
+        walmartdata.price_difference
         ).\
-        order_by((walmartdata.price_2020 - walmartdata.price_2019).desc()).limit(10)
+        order_by((walmartdata.price_difference).desc()).limit(10)
 
     session.close()
 
@@ -116,9 +116,9 @@ def lowerten():
     results=session.query(
         walmartdata.product_name,
         walmartdata.category,
-        walmartdata.price_2019 - walmartdata.price_2020
+        walmartdata.price_difference
         ).\
-        order_by((walmartdata.price_2019 - walmartdata.price_2020).desc()).limit(10)
+        order_by((walmartdata.price_difference)).limit(10)
 
     session.close()
 

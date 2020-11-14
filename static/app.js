@@ -7,8 +7,6 @@ function init() {
   
   // Use the D3 library to read in samples.json.
   d3.json(query).then((data) => {
-    console.log(data);
-
     // Find unique category values
     function UniqueVal(cat, index, self) {
       return self.indexOf(cat) === index;
@@ -19,7 +17,6 @@ function init() {
     };
 
     var categories = AllCategories.filter(UniqueVal).sort();
-    console.log(categories);
     
     // Add categories to dropdown
     categories.forEach((data) => { 
@@ -27,12 +24,10 @@ function init() {
     });
 
     var catSelected = d3.select("#selCategory").property("value");
-    console.log(catSelected)
 
     // Filter product based on category
     var productList = data.filter(data => data.category == catSelected);
     productList.sort((a, b) => (a.product_name > b.product_name) ? 1 : -1);
-    console.log(productList)
 
     // Add products to dropdown
     productList.forEach((data) => { 
@@ -122,10 +117,8 @@ function updateMetadata(product) {
   
 // Use the D3 library to read in samples.json.
   d3.json(query).then((data) => {
-    console.log(data);
     var filterList = data.filter(productsObject => productsObject.product_name == product);
     var result = filterList[0];
-
     // Update Product Info
     // --------------------------------------------
     var metaHeader = d3.select("#meta-header");

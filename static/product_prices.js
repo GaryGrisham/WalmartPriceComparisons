@@ -3,17 +3,17 @@ query = 'http://127.0.0.1:5000/api/datacall'
 function init() {
   
     // Function to update the Demographic Info 
-    d3.json(query).then((data) => {
-      var products = data;
+    d3.json(query).then((PriceData) => {
+      var products = PriceData;
       
       // Array to hold results of the price difference
       priceDiff = []
       priceChange = []
   
       // Loop through each row to minus the 2020 price by 2019 price to get price difference year over year
-      products.forEach((data) => { 
-          priceDiff.push(parseFloat((data.price_2020 - data.price_2019).toFixed(2))); 
-          priceChange.push(((data.price_2020 / data.price_2019) * 100 - 100)); 
+      products.forEach((PriceData) => { 
+          priceDiff.push(parseFloat((PriceData.price_2020 - PriceData.price_2019).toFixed(2))); 
+          priceChange.push(((PriceData.price_2020 / PriceData.price_2019) * 100 - 100)); 
       });
       
       // Count how many results in items are positive numbers (Increased)
@@ -61,23 +61,7 @@ function init() {
       // Percentage that had  no change
       var pnoChange = parseFloat((sameCount / total * 100).toFixed(2));
   
-      // Counts
-      console.log(priceDiff) // Print the 'price differences' array
-      console.log(increasedCount) // Print the increased prices count
-      console.log(decreasedCount) // Print the decreased prices count
-      console.log(sameCount) // Print the same prices count
-  
-      console.log(priceChange) // Print the 'price change percentages' array
-      console.log(increasedChangeLess10) // Print the increased by 0 to 9% count
-      console.log(increasedChange10) // Print the increased by 10% or more count
-      console.log(total) // Print the total count of products
-      
-      // Percentages
-      console.log(pincreasedChangeLess10) // Print the increased by 0 to 9% percentage
-      console.log(pincreasedChange10) // Print the increased by 10% or more percentage
-      console.log(pdecreasedChange) // Print the decreased percentage
-      console.log(pnoChange) // Print the no change percentage
-  
+
       
       // Custom color set for CanvasJS charts
       // -------------------------------------------------     
