@@ -5,16 +5,16 @@ function init() {
 
 // Find the top ten increases
 d3.json(TopTenIncQuery).then((incData) => {
-
 var tbody = d3.select("#tbody1");
+
 
 // Step 1: Loop Through `data` and console.log each object
 incData.forEach(function(inc){
     var row = tbody.append('tr');
 
     Object.entries(inc).forEach( function([x,y]){
-        if (x == 'PriceDiff'){
-            row.append('td').text("$" + y);
+        if (x == "PriceDiff"){
+            row.append('td').text("$" + y.toFixed(2)).style("text-align", "right");
         }
         else {
             row.append('td').text(y);
@@ -34,7 +34,7 @@ d3.json(TopTenDecQuery).then((decData) => {
     
         Object.entries(dec).forEach( function([x,y]){
             if (x == 'PriceDiff'){
-                row.append('td').text("$" + y);            
+                row.append('td').text("$" + y.toFixed(2)).style("text-align", "right");            
             }
             else {
                 row.append('td').text(y);

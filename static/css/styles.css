@@ -1,11 +1,16 @@
 
 /* Custom Styles */
-.jumbotron {
-    margin-top:110px;
-}
+
 .col-md-6, .col-md-3 {
     float:left;
 }
+
+/* Top margin on the Inflation overview */
+.jumbotron {
+    margin-top:110px;
+}
+
+/* Blue div background for the Price Comparison dropdowns */
 .card-primary {
     background-color:#2a9fd6;
     border-radius:5px;
@@ -13,6 +18,8 @@
     color:#fff;
     margin-bottom:20px;
 }
+
+/* Walmart image background for Price Comparison area */
 .prodComp {
     padding:40px 20px;
     margin-bottom:20px;
@@ -22,24 +29,22 @@
     background-position: center;
     margin-top:60px;
 }
-.firstbar {
+
+/* Formatting for text inside yearly price bars in Product Comparison */
+.pricebars {
     padding:5px;
     color:#fff;
     font-weight:bold;
     display:block;
 }
-.prodname {
-    display:block;
-    width:80%;
-}
-.prodprice {
-    display:block;
-    width:20%;
-}
+
+/* Font formatting for the Price Difference div in Price Comparison area */
 #pricecomp {
     font-size:18px;
     color:#fff;
 }
+
+/* Background formatting for the Price Changes & Categories divs */
 .border-primary-col {
     background-color:#222;
     border:1px solid #2a9fd6;
@@ -47,6 +52,8 @@
     padding:40px 20px;
     margin:60px 0px 30px 0;
 }
+
+/* Layout spacing for the sections */
 .border-primary {
     padding:40px 20px;
     margin:60px 0px;

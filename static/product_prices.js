@@ -6,14 +6,14 @@ function init() {
     d3.json(query).then((PriceData) => {
       var products = PriceData;
       
-      // Array to hold results of the price difference
+      // Array to hold results of the price difference and change
       priceDiff = []
       priceChange = []
   
-      // Loop through each row to minus the 2020 price by 2019 price to get price difference year over year
+      // Loop through each row to get price difference and change year over year
       products.forEach((PriceData) => { 
-          priceDiff.push(parseFloat((PriceData.price_2020 - PriceData.price_2019).toFixed(2))); 
-          priceChange.push(((PriceData.price_2020 / PriceData.price_2019) * 100 - 100)); 
+          priceDiff.push(PriceData.price_difference); 
+          priceChange.push(PriceData.price_percent_change); 
       });
       
       // Count how many results in items are positive numbers (Increased)
@@ -51,7 +51,7 @@ function init() {
   
       // Pie Chart Percentage Calculations
       // Total Count
-      var total = increasedChangeLess10 + increasedChange10 + decreasedCount + sameCount;
+      var total = Object.keys(products).length;
       // Percentage that increased 0 to 9%
       var pincreasedChangeLess10 = parseFloat((increasedChangeLess10 / total * 100).toFixed(2));
       // Percentage that increased 10+%
@@ -113,8 +113,7 @@ function init() {
                   indexLabel: "{label} ({y}{per})",
                   // yValueFormatString:"#,##0.#"%"",
                   dataPoints: [
-                      { label: "0 to 9% Increase", y: pincreasedChangeLess10, per: "%" },
-                      
+                      { label: "0 to 9% Increase", y: pincreasedChangeLess10, per: "%" },           
                       { label: "Decrease", y: pdecreasedChange, per: "%" },
                       { label: "No Change", y: pnoChange, per: "%" },
                       { label: "10%+ Increase", y: pincreasedChange10, per: "%" },

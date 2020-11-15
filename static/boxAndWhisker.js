@@ -58,6 +58,9 @@ window.onload = function () {
             text: "Looks at the Percent Price Change by Category and Any Outliers Within Each Category",
             fontSize: 15
         }],
+        axisX: {
+            labelAngle: 45
+        },
         axisY: {
             title: "Percent Price Change",
             tickLength: 0,

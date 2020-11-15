@@ -64,7 +64,7 @@ function init() {
         .style('background-color', '#f80')
         .style('max-width', '100%')
         .text("2019")
-        .classed("firstbar",true);
+        .classed("pricebars",true);
 
     // 2020 Bar
     var svgTwo = d3.select("#svgTwo")
@@ -75,22 +75,23 @@ function init() {
       .style('background-color', '#93c')
       .style('max-width', '100%')
       .text("2020")
-      .classed("firstbar",true);
+      .classed("pricebars",true);
 
     // Product Comparison
     // --------------------------------------------
-    var priceCompNum = parseFloat((defaultProduct.price_2020 - defaultProduct.price_2019).toFixed(2))
-    if (priceCompNum > 0) {
+    var priceCompNum = defaultProduct.price_difference
+    var n = priceCompNum.toFixed(2)
+    if (n > 0) {
       var changeLabel = "⇧";
     }
-    else if (priceCompNum < 0) {
+    else if (n < 0) {
       var changeLabel = "⇩";
     }
     else {
       var changeLabel = "";
     }
     var priceComp = d3.select("#pricecomp"); 
-    priceComp.append("span").text(`${changeLabel} $${priceCompNum}`);
+    priceComp.append("span").text(`${changeLabel} $${n}`);
   });
 }
 
@@ -154,7 +155,7 @@ function updateMetadata(product) {
       .style('background-color', '#f80')
       .style('max-width', '100%')
       .text("2019")
-      .classed("firstbar",true);
+      .classed("pricebars",true);
 
     // Update 2020 Bar
     var svgTwo = d3.select("#svgTwo")
@@ -166,15 +167,16 @@ function updateMetadata(product) {
       .style('background-color', '#93c')
       .style('max-width', '100%')
       .text("2020")
-      .classed("firstbar",true);
+      .classed("pricebars",true);
 
     // Update Product Comparison
     // --------------------------------------------
-    var priceCompNum = parseFloat((result.price_2020 - result.price_2019).toFixed(2));
-    if (priceCompNum > 0) {
+    var priceCompNum = result.price_difference;
+    var n = priceCompNum.toFixed(2)
+    if (n > 0) {
       var changeLabel = "⇧";
     }
-    else if (priceCompNum < 0) {
+    else if (n < 0) {
       var changeLabel = "⇩";
     }
     else {
@@ -182,7 +184,7 @@ function updateMetadata(product) {
     };    
     var priceComp = d3.select("#pricecomp"); 
     priceComp.html(""); 
-    priceComp.append("span").text(`${changeLabel} $${priceCompNum}`);
+    priceComp.append("span").text(`${changeLabel} $${n}`);
     
   });
   }
