@@ -1,6 +1,9 @@
 # SacCrewProject2
+
 Project 2 for Data Visualization class
+
 Team Members: Gary Grisham, Jessica Mendoza, Maria Smith, and Kristen Usry 
+
 The challenges of project two were to include a Python Flask-powered API, HTML/CSS, JavaScript, and at least one database.  The project needed to include a dashboard page with multiple charts that update from the same data.  Our project also needed to include at least one JS library we did not cover in class.  Our data set had to include more than 100 records, have some level of user interaction and include at least three views.  
 
 We chose two data sources from Kaggle.com that represented price points for products from 2019 and 2020 from Walmart US.  These data sources were then cleaned and joined in Pandas and then pushed to an SQL database. The cleaning of the data took us from 30,000 records to a little over 400.    
