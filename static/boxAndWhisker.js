@@ -51,9 +51,9 @@ window.onload = function () {
     var options = {
         animationEnabled: true,
         theme: "dark2", // "light1", "light2", "dark1", "dark2"
-        title: {
-            text: "Price Change per Category "
-        },
+        // title: {
+        //     text: "Price Change per Category "
+        // },
         subtitles: [{
             text: "Looks at the Percent Price Change by Category and Any Outliers Within Each Category",
             fontSize: 15
