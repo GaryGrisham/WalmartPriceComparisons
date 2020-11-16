@@ -2,7 +2,7 @@
 
 Project 2 for Data Visualization class
 
-Team Members: Gary Grisham, Jessica Mendoza, Maria Smith, and Kristen Usry 
+Team Members: Gary Grisham, Jessica Mendoza, Maria Smith, and Kristin Usry 
 
 The challenges of project two were to include a Python Flask-powered API, HTML/CSS, JavaScript, and at least one database.  The project needed to include a dashboard page with multiple charts that update from the same data.  Our project also needed to include at least one JS library we did not cover in class.  Our data set had to include more than 100 records, have some level of user interaction and include at least three views.  
 
