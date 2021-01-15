@@ -1,6 +1,4 @@
-# SacCrewProject2
-
-Project 2 for Data Visualization class
+Analysis of prices of products found on Walmart.com between Q4 2019 and Q1 2020. 
 
 Team Members: Gary Grisham, Jessica Mendoza, Maria Smith, and Kristin Usry 
 
