@@ -1,12 +1,9 @@
-
 import sqlalchemy
 from sqlalchemy.sql import text
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from flask import Flask, jsonify, render_template, redirect
-from bs4 import BeautifulSoup
-from splinter import Browser
 
 # create engine
 engine = create_engine('postgresql://admin22:12345@localhost:5432/saccrewproject2')
@@ -135,19 +132,5 @@ def lowerten():
 
     return jsonify(all_sqldata)
 
-@app.route("/api/currentprices")
-def Current_Price():
-    session = Session(engine)
-    results = session.query(
-        walmartdata.product_url
-    ).all()
-# now we can use for loop to scrape price from results link
-    executable_path = {'executable_path': r'C:\Users\smith\Downloads\chromedriver_win32\chromedriver.exe'}
-    browser = Browser('chrome', **executable_path, headless=False)
-    for result in results:
-        # her is where we scrape
-
-
 if __name__ == "__main__":
     app.run(debug=True)
-
